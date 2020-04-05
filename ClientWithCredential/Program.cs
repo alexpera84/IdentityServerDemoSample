@@ -11,7 +11,7 @@ namespace ClientWithCredential
         public static async Task<int> Main(string[] args)
         {
             var client = new HttpClient();
-            var disco = await client.GetDiscoveryDocumentAsync("http://localhost:5000");
+            var disco = await client.GetDiscoveryDocumentAsync("https://cloudgenidentity.azurewebsites.net");
             if (disco.IsError)
             {
                 Console.WriteLine(disco.Error);

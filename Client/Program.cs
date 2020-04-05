@@ -36,7 +36,7 @@ namespace Client
             client = new HttpClient();
             client.SetBearerToken(tokenResponse.AccessToken);
 
-            var response = await client.GetAsync("https://cloudgendemoapi.azurewebsites.net/api/Default");
+            var response = await client.GetAsync("https://localhost:44379/api/Default");
             if (!response.IsSuccessStatusCode)
             {
                 Console.WriteLine(response.StatusCode);

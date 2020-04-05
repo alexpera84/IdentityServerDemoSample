@@ -10,13 +10,13 @@ namespace Api.Controller
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class DefaultController : ControllerBase
     {
         [HttpGet]
         public IActionResult Get()
         {
-            return new OkResult();//(/*from c in User.Claims select new { c.Type, c.Value }*/);
+            return new JsonResult(from c in User.Claims select new { c.Type, c.Value });
         }
     }
 }
