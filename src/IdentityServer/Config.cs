@@ -60,10 +60,10 @@ namespace IdentityServer
                         AllowedGrantTypes = GrantTypes.Implicit,
 
                         // where to redirect to after login
-                        RedirectUris = { "https://localhost:44301/signin-oidc" },
+                        RedirectUris = { "https://cloudgendemofe.azurewebsites.net/signin-oidc" },
 
                         // where to redirect to after logout
-                        PostLogoutRedirectUris = { "https://localhost:44301/signout-callback-oidc" },
+                        PostLogoutRedirectUris = { "https://cloudgendemofe.azurewebsites.net/signout-callback-oidc" },
 
                         AllowedScopes = new List<string>
                         {
