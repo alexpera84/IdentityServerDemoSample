@@ -12,7 +12,7 @@ namespace Client
         public static async Task<int> Main(string[] args)
         {
             var client = new HttpClient();
-            var disco = await client.GetDiscoveryDocumentAsync("http://localhost:5000");
+            var disco = await client.GetDiscoveryDocumentAsync("https://cloudgenidentity.azurewebsites.net/");
             if (disco.IsError)
             {
                 Console.WriteLine(disco.Error);
@@ -36,7 +36,7 @@ namespace Client
             client = new HttpClient();
             client.SetBearerToken(tokenResponse.AccessToken);
 
-            var response = await client.GetAsync("https://localhost:44379/api/Default");
+            var response = await client.GetAsync("https://cloudgendemoapi.azurewebsites.net/api/Default");
             if (!response.IsSuccessStatusCode)
             {
                 Console.WriteLine(response.StatusCode);

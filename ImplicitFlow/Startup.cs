@@ -33,7 +33,7 @@ namespace ImplicitFlow
                 .AddCookie("Cookies")
                 .AddOpenIdConnect("oidc", options =>
                 {
-                    options.Authority = "http://localhost:5000";
+                    options.Authority = "http://cloudgenidentity.azurewebsites.net/";
                     options.RequireHttpsMetadata = false;
                     options.ClientId = "mvc";
                     options.SaveTokens = true;

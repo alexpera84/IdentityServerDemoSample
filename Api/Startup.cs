@@ -24,7 +24,7 @@ namespace Api
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
                 {
-                    options.Authority = "http://cloudgenidentity.azurewebsites.net/";
+                    options.Authority = "https://cloudgenidentity.azurewebsites.net";
                     options.RequireHttpsMetadata = false;
 
                     options.Audience = "afcpayroll";
@@ -41,7 +41,6 @@ namespace Api
 
         public void Configure(IApplicationBuilder app)
         {
-            app.UseDeveloperExceptionPage();
             app.UseAuthentication();
             app.UseSwagger();
             app.UseSwaggerUI(c =>
