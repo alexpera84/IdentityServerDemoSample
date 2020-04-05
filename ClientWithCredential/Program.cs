@@ -4,11 +4,10 @@ using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace Client
+namespace ClientWithCredential
 {
     class Program
     {
-
         public static async Task<int> Main(string[] args)
         {
             var client = new HttpClient();
@@ -18,21 +17,16 @@ namespace Client
                 Console.WriteLine(disco.Error);
                 return -1;
             }
-            var tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+            var tokenResponse = await client.RequestPasswordTokenAsync(new PasswordTokenRequest
             {
                 Address = disco.TokenEndpoint,
-
-                ClientId = "client",
+                ClientId = "ro.client",
                 ClientSecret = "secret",
+
+                UserName = "alice",
+                Password = "password",
                 Scope = "afcpayroll"
             });
-
-            if (tokenResponse.IsError)
-            {
-                Console.WriteLine(tokenResponse.Error);
-                return -1;
-            }
-
             client = new HttpClient();
             client.SetBearerToken(tokenResponse.AccessToken);
 
@@ -46,12 +40,9 @@ namespace Client
                 var content = await response.Content.ReadAsStringAsync();
                 Console.WriteLine(JArray.Parse(content));
             }
-
-           
+            Console.WriteLine(tokenResponse.Json);
             Console.ReadLine();
             return 0;
         }
-
-       
     }
 }
